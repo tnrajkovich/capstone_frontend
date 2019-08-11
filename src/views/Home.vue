@@ -3,7 +3,7 @@
     <h1>All Recipes</h1>
     <div class="card" v-for="parent_recipe in parent_recipes">
       <div v-bind:src="{ image_url: parent_recipe.image_url }"></div>
-      <h3 @click="showParent(parent_recipe.id)">{{ parent_recipe.title }}</h3>
+      <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
       <h4>{{ parent_recipe.ingredients }}</h4>
       <p>{{ parent_recipe.directions }}</p>
     </div>
@@ -45,7 +45,8 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      parent_recipes: []
+      parent_recipes: [],
+      parent_recipe: {}
     };
   },
   created: function() {
@@ -53,10 +54,6 @@ export default {
       this.parent_recipes = response.data;
     });
   },
-  methods: {
-    showParent: function() {
-      this.$router.push({ name: "parent_recipes-show", params: { id: this.parent_recipes.id } });
-    }
-  }
+  methods: {}
 };
 </script>

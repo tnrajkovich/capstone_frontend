@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="container show">
     <h2>{{ parent_recipe.title }}</h2>
     <h4>{{ parent_recipe.ingredients }}</h4>
     <p>{{ parent_recipe.directions }}</p>
-    <router-link to="/parent_recipes">Back to all recipes</router-link>
+    <router-link v-bind:to="`/`">Back to all recipes</router-link>
     <div class="card" v-for="user_recipe in user_recipes">
       {{ user_recipe.title }}
       <h4>{{ user_recipe.ingredients }}</h4>
@@ -18,7 +18,9 @@ export default {
   data: function() {
     return {
       recipe: {},
-      user_recipes: []
+      parent_recipe: {},
+      user_recipes: [],
+      user_recipe: {}
     };
   },
   created: function() {

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 import ParentRecipesNew from "./views/ParentRecipesNew.vue";
+import UserRecipesNew from "./views/UserRecipesNew.vue";
 import ParentRecipesShow from "./views/ParentRecipesShow.vue";
 import ParentRecipesEdit from "./views/ParentRecipesEdit.vue";
 import Categories from "./views/Categories.vue";
@@ -47,6 +48,11 @@ export default new Router({
       path: "/parent_recipes/new",
       name: "parent_recipes-new",
       component: ParentRecipesNew
+    },
+    {
+      path: "/user_recipes/new",
+      name: "user_recipes-new",
+      component: UserRecipesNew
     },
     {
       path: "/parent_recipes/:id",

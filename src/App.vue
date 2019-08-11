@@ -9,6 +9,16 @@
       |
       <router-link to="/categories">Categories</router-link>
       |
+      <router-link to="/parent_recipes/new">
+        Create parent recipe
+        <!-- placeholder name -->
+      </router-link>
+      |
+      <router-link to="/user_recipes/new">
+        Create user recipe
+        <!-- placeholder name -->
+      </router-link>
+      |
       <router-link to="/logout">Logout</router-link>
     </div>
     <router-view />
