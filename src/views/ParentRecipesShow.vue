@@ -5,12 +5,11 @@
     <p>{{ parent_recipe.directions }}</p>
     <img :src="parent_recipe.image_url" />
     <router-link v-bind:to="`/`">Back to all recipes</router-link>
-    <div class="container user_recipe index">
-      <div class="card" v-for="user_recipe in user_recipes">
-        {{ user_recipe.title }}
-        <h4>{{ user_recipe.ingredients }}</h4>
-        <p>{{ user_recipe.directions }}</p>
-      </div>
+    <div v-for="user_recipe in user_recipes">
+      <img :src="user_recipe.image_url" />
+      {{ user_recipe.title }}
+      <h4>{{ user_recipe.ingredients }}</h4>
+      <p>{{ user_recipe.directions }}</p>
     </div>
     <div class="container mod">
       <h1>New Recipe Mod</h1>
