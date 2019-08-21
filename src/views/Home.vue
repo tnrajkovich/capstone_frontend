@@ -2,7 +2,7 @@
   <div class="container">
     <h1>All Recipes</h1>
     <div class="card" v-for="parent_recipe in parent_recipes">
-      <div v-bind:src="{ image_url: parent_recipe.image_url }"></div>
+      <img :src="parent_recipe.image_url" />
       <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
       <h4>{{ parent_recipe.ingredients }}</h4>
       <p>{{ parent_recipe.directions }}</p>

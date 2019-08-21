@@ -3,6 +3,7 @@
     <h2>{{ parent_recipe.title }}</h2>
     <h4>{{ parent_recipe.ingredients }}</h4>
     <p>{{ parent_recipe.directions }}</p>
+    <img :src="parent_recipe.image_url" />
     <router-link v-bind:to="`/`">Back to all recipes</router-link>
     <div class="container user_recipe index">
       <div class="card" v-for="user_recipe in user_recipes">
