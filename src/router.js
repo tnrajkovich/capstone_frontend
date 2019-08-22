@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
+import UserRecipesIndex from "./views/UserRecipesIndex.vue";
 import ParentRecipesNew from "./views/ParentRecipesNew.vue";
 import UserRecipesNew from "./views/UserRecipesNew.vue";
 import ParentRecipesShow from "./views/ParentRecipesShow.vue";
@@ -43,6 +44,11 @@ export default new Router({
       path: "/logout",
       name: "logout",
       component: Logout
+    },
+    {
+      path: "/user_recipes/index",
+      name: "user_recipes-index",
+      component: UserRecipesIndex
     },
     {
       path: "/parent_recipes/new",
