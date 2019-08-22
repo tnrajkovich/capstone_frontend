@@ -20,22 +20,19 @@
                   <a href="#home"><span class="menu-item-span">Home</span></a>
                 </li>
                 <li>
-                  <a href="#story"><span class="menu-item-span">Our story</span></a>
+                  <a href="#story"><span class="menu-item-span">Signup</span></a>
                 </li>
                 <li>
-                  <a href="#special"><span class="menu-item-span">Special</span></a>
+                  <a href="#special"><span class="menu-item-span">Login</span></a>
                 </li>
                 <li>
-                  <a href="#popular"><span class="menu-item-span">Popular</span></a>
+                  <a href="#popular"><span class="menu-item-span">Categories</span></a>
                 </li>
                 <li>
-                  <a href="#gallery"><span class="menu-item-span">Gallery</span></a>
+                  <a href="#gallery"><span class="menu-item-span">Recipe Gallery</span></a>
                 </li>
                 <li>
-                  <a href="#services"><span class="menu-item-span">Services</span></a>
-                </li>
-                <li>
-                  <a href="#news"><span class="menu-item-span">News</span></a>
+                  <a href="#services"><span class="menu-item-span">Logout</span></a>
                 </li>
                 <!-- Pages-->
                 <li class="menu-item-has-children">
