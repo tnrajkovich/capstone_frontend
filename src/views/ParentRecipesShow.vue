@@ -39,7 +39,6 @@ export default {
       recipe: {},
       parent_recipe: {},
       user_recipes: [],
-      user_recipe: {},
       newUserRecipeDescription: "",
       newUserRecipeNewIngredients: "",
       newUserRecipeDirections: "",
