@@ -8,9 +8,9 @@
 
     <div class="card" v-for="user_recipe in parent_recipe.user_recipes">
       <img :src="user_recipe.image_url" />
-      {{ user_recipe.title }}
-      <h4>{{ user_recipe.ingredients }}</h4>
-      <p>{{ user_recipe.directions }}</p>
+      {{ user_recipe.vote }}
+      <h4>{{ user_recipe.description }}</h4>
+      <p>{{ user_recipe.new_ingredients }}</p>
     </div>
 
     <div class="container mod">
