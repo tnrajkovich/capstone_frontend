@@ -4,18 +4,16 @@
     <section
       class="module-cover parallax fullscreen"
       id="home"
-      data-background="/src/assets/background.mp4"
+      data-jarallax-video="https://www.youtube.com/watch?v=qKqj85oo2wI"
       data-overlay="1"
       data-gradient="1"
     >
       <div class="container">
         <div class="row">
-          <video id="video-bg-elem" preload="auto" autoplay="true" loop="loop" muted="muted">
-            <source src="/src/assets/background.mp4" type="video/mp4" />
-          </video>
           <div class="col-md-12 m-auto">
             <div class="text-center">
-              <h1 class="text-uppercase">Social Recipes</h1>
+              <h6 class="text-uppercase"></h6>
+              <h1 class="display-1">Social Recipes</h1>
               <p>
                 See masters at work.
               </p>

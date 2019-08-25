@@ -28,6 +28,8 @@
   </div>
 </template>
 
+<style type="text/css"></style>
+
 <script>
 import axios from "axios";
 
