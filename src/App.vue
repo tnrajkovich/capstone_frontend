@@ -17,83 +17,19 @@
             <div class="inner-nav onepage-nav">
               <ul>
                 <li>
-                  <a href="#home"><span class="menu-item-span">Home</span></a>
+                  <a href="/"><span class="menu-item-span">Home</span></a>
                 </li>
                 <li>
-                  <a href="#story"><span class="menu-item-span">Signup</span></a>
+                  <a href="/Signup"><span class="menu-item-span">Signup</span></a>
                 </li>
                 <li>
-                  <a href="#special"><span class="menu-item-span">Login</span></a>
+                  <a href="/Login"><span class="menu-item-span">Login</span></a>
                 </li>
                 <li>
-                  <a href="#popular"><span class="menu-item-span">Categories</span></a>
+                  <a href="/Categories"><span class="menu-item-span">Categories</span></a>
                 </li>
                 <li>
-                  <a href="#gallery"><span class="menu-item-span">Recipe Gallery</span></a>
-                </li>
-                <li>
-                  <a href="#services"><span class="menu-item-span">Logout</span></a>
-                </li>
-                <!-- Pages-->
-                <li class="menu-item-has-children">
-                  <a href="features.html"><span class="menu-item-span">Pages</span></a>
-                  <ul class="sub-menu">
-                    <li class="menu-item-has-children">
-                      <a href="#">Blog</a>
-                      <ul class="sub-menu">
-                        <li><a href="blog-1.html">Blog</a></li>
-                        <li><a href="blog-single-1.html">Post Single</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Gallery</a>
-                      <ul class="sub-menu">
-                        <li><a href="gallery-1.html">2 Columns</a></li>
-                        <li><a href="gallery-2.html">3 Columns</a></li>
-                        <li><a href="gallery-3.html">4 Columns</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Menu Grid</a>
-                      <ul class="sub-menu">
-                        <li><a href="menu-gallery-1.html">2 Columns</a></li>
-                        <li><a href="menu-gallery-2.html">3 Columns</a></li>
-                        <li><a href="menu-gallery-3.html">4 Columns</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Menu Tiles</a>
-                      <ul class="sub-menu">
-                        <li><a href="menu-tiles-1.html">1 Column</a></li>
-                        <li><a href="menu-tiles-2.html">2 Columns</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Menu Simple</a>
-                      <ul class="sub-menu">
-                        <li><a href="menu-simple-1.html">1 Column</a></li>
-                        <li><a href="menu-simple-2.html">2 Columns</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">User Pages</a>
-                      <ul class="sub-menu">
-                        <li><a href="sign-in.html">Sign in</a></li>
-                        <li><a href="sign-up.html">Sign up</a></li>
-                        <li><a href="password-recovery.html">Recover password</a></li>
-                      </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                      <a href="#">Contact Us</a>
-                      <ul class="sub-menu">
-                        <li><a href="contact.html">Contact Us 1</a></li>
-                        <li><a href="contact-2.html">Contact Us 2</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="reservations.html">Reservations</a></li>
-                    <li><a href="elements.html">Elements</a></li>
-                    <li><a href="icons.html">Icons</a></li>
-                  </ul>
+                  <a href="/Logout"><span class="menu-item-span">Logout</span></a>
                 </li>
               </ul>
             </div>
@@ -111,15 +47,6 @@
         </div>
       </div>
     </header>
-    <router-link to="/">Home</router-link>
-    |
-    <router-link to="/signup">Signup</router-link>
-    |
-    <router-link to="/login">Login</router-link>
-    |
-    <router-link to="/categories">Categories</router-link>
-    |
-    <router-link to="/logout">Logout</router-link>
     <router-view />
 
     <footer class="footer">

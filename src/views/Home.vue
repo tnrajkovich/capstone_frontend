@@ -1,13 +1,10 @@
 <template>
   <div class="wrapper">
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-      <source src="assets/background.mp4" type="video/mp4" />
-    </video>
     <!-- Hero-->
     <section
       class="module-cover parallax fullscreen"
       id="home"
-      data-background="assets/background.mp4"
+      data-background="/src/assets/background.mp4"
       data-overlay="1"
       data-gradient="1"
     >
