@@ -5,13 +5,6 @@
 
       <div class="navigation navigation-center">
         <div class="container-fluid">
-          <!-- Brand-->
-          <div class="inner-header">
-            <a class="inner-brand" href="index.html">
-              <img class="brand-dark" src="assets/images/logo.png" width="74px" alt="" />
-              <img class="brand-light" src="assets/images/logo-light.png" width="74px" alt="" />
-            </a>
-          </div>
           <!-- Navigation-->
           <div class="inner-navigation collapse">
             <div class="inner-nav onepage-nav">
@@ -56,7 +49,6 @@
             <!-- Text widget-->
             <aside class="widget widget_text">
               <div class="textwidget">
-                <p><img src="assets/images/logo-light.png" width="74px" alt="" /></p>
                 <ul class="icon-list"></ul>
               </div>
             </aside>
