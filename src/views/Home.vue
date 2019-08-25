@@ -48,30 +48,16 @@
           <div class="col-xl-8 col-lg-12">
             <div class="gallery gallery-shorcode">
               <div class="gallery-item" v-for="parent_recipe in parent_recipes">
-                <div class="gallery-image" data-background="{{parent_recipe.image_url}}"></div>
+                <div class="gallery-image">
+                  <img :src="parent_recipe.image_url" />
+                  <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
+                </div>
                 <a href="`/parent_recipes/${parent_recipe.id}`">
                   {{ parent_recipe.title }}
                 </a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="assets/images/portfolio/5.jpg"></div>
-                <a href="assets/images/portfolio/5.jpg" title="Title 2"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="assets/images/portfolio/3.jpg"></div>
-                <a href="assets/images/portfolio/3.jpg" title="Title 3"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="assets/images/portfolio/4.jpg"></div>
-                <a href="assets/images/portfolio/4.jpg" title="Title 4"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="assets/images/portfolio/2.jpg"></div>
-                <a href="assets/images/portfolio/2.jpg" title="Title 5"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="assets/images/portfolio/6.jpg"></div>
-                <a href="assets/images/portfolio/6.jpg" title="Title 6"></a>
+                <h2>{{ parent_recipe.title }}</h2>
+                <h4>{{ parent_recipe.ingredients }}</h4>
+                <p>{{ parent_recipe.directions }}</p>
               </div>
             </div>
           </div>
@@ -95,6 +81,11 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+}
+
+.gallery-image {
+  height: 500px;
+  align-content: center;
 }
 
 img {
