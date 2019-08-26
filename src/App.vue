@@ -15,12 +15,12 @@
                 <li>
                   <a href="/Signup"><span class="menu-item-span">Signup</span></a>
                 </li>
-                <li>
+                <!--                 <li>
                   <a href="/Login"><span class="menu-item-span">Login</span></a>
-                </li>
-                <li>
+                </li> -->
+                <!--                 <li>
                   <a href="/Categories"><span class="menu-item-span">Categories</span></a>
-                </li>
+                </li> -->
                 <li>
                   <a href="/Logout"><span class="menu-item-span">Logout</span></a>
                 </li>
@@ -47,26 +47,11 @@
         <div class="row">
           <div class="col-md-3">
             <!-- Text widget-->
-            <aside class="widget widget_text">
-              <div class="textwidget">
-                <ul class="icon-list"></ul>
-              </div>
-            </aside>
           </div>
           <div class="col-md-3">
             <!-- Recent entries widget-->
             <div class="small-footer">
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="copyright">
-                      © 2019
-                      <a href="http://2the.me/">2theme</a>
-                      All Rights Reserved.
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <div class="container"></div>
             </div>
           </div>
         </div>

@@ -18,7 +18,7 @@
                 See masters at work.
               </p>
               <div class="space" data-mY="40px"></div>
-              <a class="btn btn-white" href="#">Login</a>
+              <a class="btn btn-white" href="/Login">Login</a>
             </div>
           </div>
         </div>
