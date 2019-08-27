@@ -18,7 +18,7 @@
                 See masters at work.
               </p>
               <div class="space" data-mY="40px"></div>
-              <a class="btn btn-white" href="/Login">Login</a>
+              <a class="btn btn-white" href="/Login"></a>
             </div>
           </div>
         </div>
@@ -48,8 +48,8 @@
               <div class="gallery-item" v-for="parent_recipe in parent_recipes">
                 <div class="gallery-image">
                   <img :src="parent_recipe.image_url" />
-                  <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
                 </div>
+                <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
                 <a href="`/parent_recipes/${parent_recipe.id}`">
                   {{ parent_recipe.title }}
                 </a>

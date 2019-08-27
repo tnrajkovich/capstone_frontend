@@ -6,6 +6,7 @@ import ParentRecipesNew from "./views/ParentRecipesNew.vue";
 import UserRecipesNew from "./views/UserRecipesNew.vue";
 import ParentRecipesShow from "./views/ParentRecipesShow.vue";
 import ParentRecipesEdit from "./views/ParentRecipesEdit.vue";
+import UserRecipesEdit from "./views/UserRecipesEdit.vue";
 import Categories from "./views/Categories.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
@@ -69,6 +70,11 @@ export default new Router({
       path: "/parent_recipes/:id/edit",
       name: "parent_recipes-edit",
       component: ParentRecipesEdit
+    },
+    {
+      path: "/user_recipes/:id/edit",
+      name: "user_recipes-edit",
+      component: UserRecipesEdit
     },
     {
       path: "/categories",

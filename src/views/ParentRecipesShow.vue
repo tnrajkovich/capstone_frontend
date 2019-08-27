@@ -28,16 +28,25 @@
                   <p>{{ parent_recipe.directions }}</p>
                 </div>
               </div>
-              <div class="menu-simple-item" v-for="user_recipe in parent_recipe.user_recipes">
+              <div
+                class="menu-simple-item"
+                v-for="user_recipe in parent_recipe.user_recipes"
+                v-bind:key="user_recipe.vote"
+              >
                 <div class="menu-simple-item-img">
                   <img :src="user_recipe.image_url" />
                 </div>
                 <div class="menu-simple-item-inner">
                   <h6>
                     <span>{{ user_recipe.description }}</span>
-                    <span class="pull-right">{{ user_recipe.vote }}</span>
+                    <span class="pull-right">
+                      {{ user_recipe.vote }}
+                      <button v-on:click="vote()"></button>
+                    </span>
                   </h6>
-                  <p>{{ user_recipe.new_ingredients }}</p>
+                  <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
+                  <p>Edit</p>
+                  <p></p>
                 </div>
               </div>
             </div>
@@ -49,20 +58,20 @@
         <div class="row">
           <div class="col-md-12">
             <div class="space" data-mY="60px"></div>
-            <h1>New Recipe Mod</h1>
+            <h3>New Recipe Mod</h3>
             <form v-on:submit.prevent="createUserRecipe()">
               <ul>
                 <li v-for="error in errors">{{ error }}</li>
               </ul>
               Description:
-              <input type="text" v-model="newUserRecipeDescription" />
+              <input type="text" v-model="description" />
               New Ingredients:
-              <input type="text" v-model="newUserRecipeNewIngredients" />
+              <input type="text" v-model="new_ingredients" />
               Parent Recipe:
-              <input type="text" v-model="newUserRecipeDirections" />
+              <input type="text" v-model="parent_recipe_id" />
               Image:
-              <input type="text" v-model="newUserRecipeImageUrl" />
-              <input type="submit" value="Create" />
+              <input type="file" v-on:change="setFile($event)" ref="fileInput" />
+              <input type="submit" value="Create" v-on:click="createUserRecipe()" />
             </form>
           </div>
         </div>
@@ -75,6 +84,20 @@
 img {
   width: 300px;
 }
+
+.vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background: url("http://i.stack.imgur.com/iqN2k.png");
+  background-position: 0 -25px;
+}
+
+.vote.on {
+  background-position: 0 2px;
+}
 </style>
 
 <script>
@@ -85,11 +108,10 @@ export default {
       recipe: {},
       parent_recipe: {},
       user_recipe: {},
-      newUserRecipeDescription: "",
-      newUserRecipeNewIngredients: "",
-      newUserRecipeDirections: "",
-      newUserRecipeCategoryId: "",
-      newUserRecipeImageUrl: "",
+      description: "",
+      new_ingredients: "",
+      parent_recipe_id: "",
+      image: "",
       errors: []
     };
   },
@@ -99,19 +121,22 @@ export default {
     });
   },
   methods: {
+    setFile: function(event) {
+      if (event.target.files.length > 0) {
+        this.image = event.target.files[0];
+      }
+    },
     createUserRecipe: function() {
       var params = {
-        description: this.newUserRecipeDescription,
-        new_ingredients: this.newUserRecipeNewIngredients,
-        parent_recipe_id: this.newUserRecipeParentRecipeId,
-        user_id: this.newUserRecipeUserId,
-        vote: this.newUserRecipeVote,
-        image_url: this.newUserRecipeImageUrl
+        description: this.description,
+        new_ingredients: this.new_ingredients,
+        parent_recipe_id: 2,
+        image: this.image
       };
       axios
         .post("/api/user_recipes", params)
         .then(response => {
-          this.$router.push("/user_recipes");
+          this.$router.go;
         })
         .catch(error => {
           console.log(error.response);

@@ -13,16 +13,16 @@
                   <a href="/"><span class="menu-item-span">Home</span></a>
                 </li>
                 <li>
-                  <a href="/Signup"><span class="menu-item-span">Signup</span></a>
+                  <a href="/Signup"><span class="menu-item-span" v-if="!jwt">Signup</span></a>
                 </li>
-                <!--                 <li>
-                  <a href="/Login"><span class="menu-item-span">Login</span></a>
-                </li> -->
+                <li>
+                  <a href="/Login"><span class="menu-item-span" v-if="!jwt">Login</span></a>
+                </li>
                 <!--                 <li>
                   <a href="/Categories"><span class="menu-item-span">Categories</span></a>
                 </li> -->
                 <li>
-                  <a href="/Logout"><span class="menu-item-span">Logout</span></a>
+                  <a href="/Logout"><span class="menu-item-span" v-if="jwt">Logout</span></a>
                 </li>
               </ul>
             </div>
@@ -40,7 +40,7 @@
         </div>
       </div>
     </header>
-    <router-view />
+    <router-view v-on:changeJwt="setJwt()" />
 
     <footer class="footer">
       <div class="container">
@@ -61,3 +61,21 @@
 </template>
 
 <style></style>
+
+<script>
+export default {
+  data: function() {
+    return {
+      jwt: null
+    };
+  },
+  created: function() {
+    this.setJwt();
+  },
+  methods: {
+    setJwt: function() {
+      this.jwt = localStorage.getItem("jwt");
+    }
+  }
+};
+</script>

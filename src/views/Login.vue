@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div class="wrapper">
     <div class="container">
       <form v-on:submit.prevent="submit()">
         <h1>Login</h1>
@@ -44,6 +44,7 @@ export default {
         .then(response => {
           axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
+          this.$emit("changeJwt");
           this.$router.push("/");
         })
         .catch(error => {
