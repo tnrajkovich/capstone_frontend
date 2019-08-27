@@ -1,6 +1,6 @@
 <template>
   <div class="container show">
-    <section class="module" id="popular">
+    <section class="module" id="popular" data-background="/../public/assets/images/Steak.jpg" data-overlay="0.7">
       <div class="container">
         <div class="row">
           <div class="col-md-6 m-auto text-center">
@@ -66,9 +66,9 @@
               Description:
               <input type="text" v-model="description" />
               New Ingredients:
-              <input type="text" v-model="newIngredients" />
+              <input type="text" v-model="new_ingredients" />
               Parent Recipe:
-              <input type="text" v-model="parentRecipeid" />
+              <input type="text" v-model="parent_recipe_id" />
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
               <input type="submit" value="Create" v-on:click="createUserRecipe()" />
@@ -109,9 +109,9 @@ export default {
       parent_recipe: {},
       user_recipe: {},
       description: "",
-      newIngredients: "",
-      parentRecipeid: "",
-      image: "",
+      new_ingredients: "",
+      parent_recipe_id: "",
+      image_url: "",
       errors: []
     };
   },
@@ -129,9 +129,9 @@ export default {
     createUserRecipe: function() {
       var params = {
         description: this.description,
-        new_ingredients: this.newIngredients,
+        new_ingredients: this.new_ingredients,
         parent_recipe_id: 2,
-        image: this.image
+        image_url: this.image_url
       };
       axios
         .post("/api/user_recipes", params)

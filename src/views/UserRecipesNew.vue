@@ -6,13 +6,13 @@
         <li v-for="error in errors">{{ error }}</li>
       </ul>
       Description:
-      <input type="text" v-model="newUserRecipeDescription" />
+      <input type="text" v-model="description" />
       New Ingredients:
-      <input type="text" v-model="newUserRecipeNewIngredients" />
+      <input type="text" v-model="newIngredients" />
       Parent Recipe:
-      <input type="text" v-model="newUserRecipeDirections" />
+      <input type="text" v-model="parentRecipeid" />
       Image:
-      <input type="text" v-model="newUserRecipeImageUrl" />
+      <input type="text" v-model="image" />
       <input type="submit" value="Create" />
     </form>
   </div>
@@ -23,11 +23,12 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      newUserRecipeDescription: "",
-      newUserRecipeNewIngredients: "",
-      newUserRecipeDirections: "",
-      newUserRecipeCategoryId: "",
-      newUserRecipeImageUrl: "",
+      description: "",
+      newIngredients: "",
+      parentRecipeid: 2,
+      userId: "",
+      vote: "",
+      image: "",
       errors: []
     };
   },
@@ -35,12 +36,12 @@ export default {
   methods: {
     createUserRecipe: function() {
       var params = {
-        description: this.newUserRecipeDescription,
-        new_ingredients: this.newUserRecipeNewIngredients,
-        parent_recipe_id: this.newUserRecipeParentRecipeId,
-        user_id: this.newUserRecipeUserId,
-        vote: this.newUserRecipeVote,
-        image_url: this.newUserRecipeImageUrl
+        description: this.description,
+        new_ingredients: this.newIngredients,
+        parent_recipe_id: this.parentRecipeid,
+        user_id: this.userId,
+        vote: this.vote,
+        image: this.image
       };
       axios
         .post("/api/user_recipes", params)
