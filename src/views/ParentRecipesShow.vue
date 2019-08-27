@@ -45,7 +45,7 @@
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
-                  <p>Edit</p>
+                  <router-link v-bind:to="`/UserRecipesEdit`">Edit</router-link>
                   <p></p>
                 </div>
               </div>
@@ -66,9 +66,9 @@
               Description:
               <input type="text" v-model="description" />
               New Ingredients:
-              <input type="text" v-model="new_ingredients" />
+              <input type="text" v-model="newIngredients" />
               Parent Recipe:
-              <input type="text" v-model="parent_recipe_id" />
+              <input type="text" v-model="parentRecipeid" />
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
               <input type="submit" value="Create" v-on:click="createUserRecipe()" />
@@ -109,8 +109,8 @@ export default {
       parent_recipe: {},
       user_recipe: {},
       description: "",
-      new_ingredients: "",
-      parent_recipe_id: "",
+      newIngredients: "",
+      parentRecipeid: "",
       image: "",
       errors: []
     };
@@ -129,7 +129,7 @@ export default {
     createUserRecipe: function() {
       var params = {
         description: this.description,
-        new_ingredients: this.new_ingredients,
+        new_ingredients: this.newIngredients,
         parent_recipe_id: 2,
         image: this.image
       };
