@@ -46,6 +46,34 @@
           <div class="col-xl-8 col-lg-12">
             <div class="gallery gallery-shorcode">
               <div class="gallery-item" v-for="parent_recipe in parent_recipes">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`">
+                  {{ parent_recipe.title }}
+                </a>
+                <h4>{{ parent_recipe.ingredients }}</h4>
+                <p>{{ parent_recipe.directions }}</p>
+              </div>
+              <div class="gallery-item">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
+              </div>
+              <div class="gallery-item">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
+              </div>
+              <div class="gallery-item">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
+              </div>
+              <div class="gallery-item">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
+              </div>
+              <div class="gallery-item">
+                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
+                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
+              </div>
+              <div class="gallery-item" v-for="parent_recipe in parent_recipes">
                 <div class="gallery-image">
                   <img :src="parent_recipe.image_url" />
                 </div>

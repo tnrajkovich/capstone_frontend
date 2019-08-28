@@ -59,7 +59,7 @@
           <div class="col-md-12">
             <div class="space" data-mY="60px"></div>
             <h3>New Recipe Mod</h3>
-            <form v-on:submit.prevent="createUserRecipe()">
+            <form action="/api/user_recipes" enctype="multipart/form-data" v-on:submit.prevent="createUserRecipe()">
               <ul>
                 <li v-for="error in errors">{{ error }}</li>
               </ul>
@@ -111,6 +111,7 @@ export default {
       description: "",
       new_ingredients: "",
       parent_recipe_id: "",
+      vote: "",
       image_url: "",
       errors: []
     };
@@ -123,20 +124,24 @@ export default {
   methods: {
     setFile: function(event) {
       if (event.target.files.length > 0) {
-        this.image = event.target.files[0];
+        this.image_url = event.target.files[0];
       }
     },
     createUserRecipe: function() {
-      var params = {
-        description: this.description,
-        new_ingredients: this.new_ingredients,
-        parent_recipe_id: 2,
-        image_url: this.image_url
-      };
+      var formData = new FormData();
+      formData.append("description", this.description);
+      formData.append("new_ingredients", this.new_ingredients);
+      formData.append("parent_recipe_id", this.parent_recipe_id);
+      formData.append("vote", this.vote);
+      formData.append("image_url", this.image_url);
       axios
-        .post("/api/user_recipes", params)
+        .post("/api/user_recipes", formData)
         .then(response => {
-          this.$router.go;
+          this.description = "";
+          this.new_ingredients = "";
+          this.parent_recipe_id = "";
+          this.vote = "";
+          this.$refs.fileInput.value = "";
         })
         .catch(error => {
           console.log(error.response);

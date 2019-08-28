@@ -1,57 +1,85 @@
 <template>
-  <section class="module-cover fullscreen parallax" data-background="assets/images/Bolognese.jpg" data-overlay="0.7">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4 m-auto">
-          <div class="text-center">
-            <div class="up-as">
-              <h5>Create a new account</h5>
-            </div>
-            <div class="up-form">
-              <form v-on:submit.prevent="submit()">
-                <ul>
-                  <li class="text-danger" v-for="error in errors">{{ error }}</li>
-                </ul>
-                <div class="form-group">
-                  <label>First Name:</label>
-                  <input type="text" class="form-control" v-model="firstName" />
-                </div>
-                <div class="form-group">
-                  <label>Last Name:</label>
-                  <input type="text" class="form-control" v-model="lastName" />
-                </div>
-                <div class="form-group">
-                  <label>Username:</label>
-                  <input type="text" class="form-control" v-model="username" />
-                </div>
-                <div class="form-group">
-                  <label>Email:</label>
-                  <input type="email" class="form-control" v-model="email" />
-                </div>
-                <div class="form-group">
-                  <label>Password:</label>
-                  <input type="password" class="form-control" v-model="password" />
-                </div>
-                <div class="form-group">
-                  <label>Password Confirmation:</label>
-                  <input type="password" class="form-control" v-model="passwordConfirmation" />
-                </div>
-                <input type="submit" class="btn btn-primary" value="Submit" />
-              </form>
-            </div>
-            <div class="up-help">
-              <p>
-                By clicking "Sign Up", you agree to our
-                <br />
-                <a href="#">software services agreement</a>
-                .
-              </p>
+  <div class="wrapper">
+    <section class="module-cover fullscreen parallax" data-background="assets/images/Bolognese.jpg" data-overlay="0.7">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 m-auto">
+            <div class="text-center">
+              <div class="up-as">
+                <h5>Create a new account</h5>
+              </div>
+              <div class="up-form" v-on:submit.prevent="submit()">
+                <form method="post">
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="First Name" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Last Name" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Username" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="email" placeholder="Email" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" placeholder="Pasword" />
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" type="password" placeholder="Confirm password" />
+                  </div>
+                  <div class="form-group">
+                    <button class="btn btn-block btn-round btn-brand" type="submit">Sign Up</button>
+                  </div>
+                </form>
+              </div>
+              <div class="up-help">
+                <p>
+                  By clicking "Sign Up", you agree to our
+                  <br />
+                  <a href="#">software services agreement</a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- Hero end-->
+
+    <svg
+      class="footer-circle"
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      width="100%"
+      height="100"
+      viewbox="0 0 100 100"
+      preserveaspectratio="none"
+    >
+      <path d="M0 100 C40 0 60 0 100 100 Z"></path>
+    </svg>
+    <!-- Footer-->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+      <div class="small-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Footer end-->
+  </div>
 </template>
 
 <style type="text/css"></style>
