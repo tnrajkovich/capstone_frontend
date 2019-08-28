@@ -45,41 +45,9 @@
           <div class="col-xl-8 col-lg-12">
             <div class="gallery gallery-shorcode">
               <div class="gallery-item" v-for="parent_recipe in parent_recipes">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`">
-                  {{ parent_recipe.title }}
-                </a>
-                <h4>{{ parent_recipe.ingredients }}</h4>
-                <p>{{ parent_recipe.directions }}</p>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
-              </div>
-              <div class="gallery-item">
-                <div class="gallery-image" data-background="`${parent_recipe.image_url}`"></div>
-                <a href="`/parent_recipes/${parent_recipe.id}`" title="`${parent_recipe.title}`"></a>
-              </div>
-              <div class="gallery-item" v-for="parent_recipe in parent_recipes">
-                <div class="gallery-image">
-                  <img :src="parent_recipe.image_url" />
-                </div>
-                <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
-                <a href="`/parent_recipes/${parent_recipe.id}`">
-                  {{ parent_recipe.title }}
-                </a>
+                <div class="gallery-image" :data-background="parent_recipe.image_url"></div>
+                <a :href="`/parent_recipes/${parent_recipe.id}`" :title="parent_recipe.title"></a>
+                <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`"></router-link>
                 <h2>{{ parent_recipe.title }}</h2>
                 <h4>{{ parent_recipe.ingredients }}</h4>
                 <p>{{ parent_recipe.directions }}</p>
@@ -90,7 +58,7 @@
       </div>
     </section>
 
-    <div class="container">
+    <!--     <div class="container">
       <h1>All Recipes</h1>
       <div class="card" v-for="parent_recipe in parent_recipes">
         <img :src="parent_recipe.image_url" />
@@ -98,7 +66,7 @@
         <h4>{{ parent_recipe.ingredients }}</h4>
         <p>{{ parent_recipe.directions }}</p>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
