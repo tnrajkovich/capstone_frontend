@@ -41,11 +41,14 @@
                     <span>{{ user_recipe.description }}</span>
                     <span class="pull-right">
                       {{ user_recipe.vote }}
-                      <button v-on:click="vote()"></button>
+                      <div><button class="triangle-up" v-on:click="upvote()"></button></div>
+                      <div><button class="triangle-down" v-on:click="downvote()"></button></div>
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
-                  <router-link v-bind:to="`/UserRecipesEdit`">Edit</router-link>
+                  <router-link v-if="currentUser.id === user_recipe.user_id" v-bind:to="`/UserRecipesEdit`">
+                    Edit
+                  </router-link>
                   <p></p>
                 </div>
               </div>
@@ -98,6 +101,22 @@ img {
 .vote.on {
   background-position: 0 2px;
 }
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #555;
+}
+
+.triangle-down {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #555;
+}
 </style>
 
 <script>
@@ -105,6 +124,12 @@ import axios from "axios";
 export default {
   data: function() {
     return {
+      currentUser: {
+        id: "",
+        username: "",
+        email: "",
+        password: ""
+      },
       recipe: {},
       parent_recipe: {},
       user_recipe: {},
@@ -126,6 +151,19 @@ export default {
       if (event.target.files.length > 0) {
         this.image_url = event.target.files[0];
       }
+    },
+    upvote: function() {
+      this.user_recipe.vote += 1;
+      this.user_recipe.save;
+    },
+    downvote: function() {
+      this.user_recipe.vote -= 1;
+      this.user_recipe.save;
+    },
+    destroyRecipe: function(user_recipe) {
+      axios.delete("/api/user_recipes/" + user_recipe.id).then(response => {
+        this.$router.go;
+      });
     },
     createUserRecipe: function() {
       var formData = new FormData();
