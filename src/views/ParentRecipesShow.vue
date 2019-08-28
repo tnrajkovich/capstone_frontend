@@ -34,6 +34,7 @@
                 v-bind:key="user_recipe.vote"
               >
                 <div class="menu-simple-item-img">
+                  {{ user_recipe.user_id }}
                   <img :src="user_recipe.image_url" />
                 </div>
                 <div class="menu-simple-item-inner">
@@ -46,7 +47,7 @@
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
-                  <router-link v-if="currentUser.id === user_recipe.user_id" v-bind:to="`/UserRecipesEdit`">
+                  <router-link v-bind:to="`/UserRecipesEdit`">
                     Edit
                   </router-link>
                   <p></p>
@@ -74,7 +75,7 @@
               <input type="text" v-model="parent_recipe_id" />
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
-              <input type="submit" value="Create" v-on:click="createUserRecipe()" />
+              <input type="submit" value="Create" @click="createUserRecipe()" />
             </form>
           </div>
         </div>
@@ -124,12 +125,6 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      currentUser: {
-        id: "",
-        username: "",
-        email: "",
-        password: ""
-      },
       recipe: {},
       parent_recipe: {},
       user_recipe: {},
@@ -159,11 +154,6 @@ export default {
     downvote: function() {
       this.user_recipe.vote -= 1;
       this.user_recipe.save;
-    },
-    destroyRecipe: function(user_recipe) {
-      axios.delete("/api/user_recipes/" + user_recipe.id).then(response => {
-        this.$router.go;
-      });
     },
     createUserRecipe: function() {
       var formData = new FormData();
