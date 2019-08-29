@@ -42,8 +42,12 @@
                     <span>{{ user_recipe.description }}</span>
                     <span class="pull-right">
                       {{ user_recipe.vote }}
-                      <div><button class="triangle-up" v-on:click="upvote()"></button></div>
-                      <div><button class="triangle-down" v-on:click="downvote()"></button></div>
+                      <div>
+                        <button class="up" v-on:click="upvote(vote)">△</button>
+                      </div>
+                      <div>
+                        <button class="down" v-on:click="downvote(vote)">▽</button>
+                      </div>
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
@@ -75,7 +79,7 @@
               <input type="text" v-model="parent_recipe_id" />
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
-              <input type="submit" value="Create" @click="createUserRecipe()" />
+              <input type="submit" value="Create" />
             </form>
           </div>
         </div>
@@ -103,29 +107,30 @@ img {
   background-position: 0 2px;
 }
 
-.triangle-up {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid #555;
+.up {
+  border-left: 15px transparent;
+  border-right: 15px transparent;
+  border-bottom: 30px transparent;
+  border-top: 30px transparent;
 }
 
-.triangle-down {
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 30px solid #555;
+.down {
+  border-left: 15px transparent;
+  border-right: 15px transparent;
+  border-top: 30px transparent;
+  border-bottom: 30px transparent;
 }
 </style>
 
 <script>
 import axios from "axios";
+import ActionCable from "actioncable";
+
 export default {
   data: function() {
     return {
       recipe: {},
+      User: {},
       parent_recipe: {},
       user_recipe: {},
       description: "",
@@ -147,11 +152,11 @@ export default {
         this.image_url = event.target.files[0];
       }
     },
-    upvote: function() {
+    upvote: function(vote) {
       this.user_recipe.vote += 1;
       this.user_recipe.save;
     },
-    downvote: function() {
+    downvote: function(vote) {
       this.user_recipe.vote -= 1;
       this.user_recipe.save;
     },
