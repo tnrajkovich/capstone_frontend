@@ -18,17 +18,16 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/parent_recipes/" + this.$router.inputUser_recipe.id + "/edit").then(response => {
+    axios.get("/api/user_recipes/" + this.$router.inputUser_recipe.id + "/edit").then(response => {
       this.user_recipe = response.data;
       console.log(this.user_recipe);
     });
   },
   methods: {
-    updateProduct: function(inputUser_recipe) {
+    updateUserRecipe: function(inputUser_recipe) {
       var params = {
-        name: inputUser_recipe.name,
-        price: inputUser_recipe.price,
-        description: inputUser_recipe.description,
+        directions: inputUser_recipe.directions,
+        new_ingredients: inputUser_recipe.new_ingredients,
         image_url: inputUser_recipe.image_url
       };
       axios.patch("/api/user_recipes/" + inputUser_recipe.id, params).then(response => {

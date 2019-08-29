@@ -28,6 +28,9 @@
                   <p>{{ parent_recipe.directions }}</p>
                 </div>
               </div>
+              <div>
+                <h1>Recipe mods</h1>
+              </div>
               <div
                 class="menu-simple-item"
                 v-for="user_recipe in parent_recipe.user_recipes"
@@ -54,7 +57,9 @@
                   <router-link v-bind:to="`/UserRecipesEdit`">
                     Edit
                   </router-link>
-                  <p></p>
+                  <button class="delete" v-on:click="destroyUserRecipe(user_recipe)">
+                    Delete
+                  </button>
                 </div>
               </div>
             </div>
@@ -120,6 +125,13 @@ img {
   border-top: 30px transparent;
   border-bottom: 30px transparent;
 }
+
+.delete {
+  border-left: 15px transparent;
+  border-right: 15px transparent;
+  border-top: 30px transparent;
+  border-bottom: 30px transparent;
+}
 </style>
 
 <script>
@@ -159,6 +171,11 @@ export default {
     downvote: function(vote) {
       this.user_recipe.vote -= 1;
       this.user_recipe.save;
+    },
+    destroyUserRecipe: function(user_recipe) {
+      axios.delete("/api/user_recipes/" + user_recipe.id).then(response => {
+        this.$router.do;
+      });
     },
     createUserRecipe: function() {
       var formData = new FormData();
