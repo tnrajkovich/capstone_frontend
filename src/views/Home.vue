@@ -31,13 +31,7 @@
             <div class="gallery-shorcode-desc">
               <div class="vertical-body">
                 <div class="vertical">
-                  <div class="text-center">
-                    <p class="subtitle">Photos</p>
-                    <h1 class="display-1">Gallery</h1>
-                    <div class="divider-border"></div>
-                    <div class="space" data-mY="60px"></div>
-                    <a class="btn btn-black" href="#">View Gallery</a>
-                  </div>
+                  <div class="text-center"></div>
                 </div>
               </div>
             </div>

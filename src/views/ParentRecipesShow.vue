@@ -168,22 +168,20 @@ export default {
     },
     upvote: function(user_recipe) {
       var params = {
-        vote: this.vote
+        vote: user_recipe.vote
       };
       axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
         user_recipe.vote += 1;
-        user_recipe.save;
         console.log("Successful update", response.data);
         this.vote = response.data.vote;
       });
     },
     downvote: function(user_recipe) {
       var params = {
-        vote: this.vote
+        vote: user_recipe.vote
       };
       axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
         user_recipe.vote -= 1;
-        user_recipe.save;
         console.log("Successful update", response.data);
         this.vote = response.data.vote;
       });
