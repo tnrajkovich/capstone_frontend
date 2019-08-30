@@ -54,7 +54,7 @@
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
-                  <router-link v-bind:to="`/UserRecipesEdit`">
+                  <router-link v-bind:to="`/user_recipes/${user_recipe.id}/edit`">
                     Edit
                   </router-link>
                   <button class="delete" v-on:click="destroyUserRecipe(user_recipe)">

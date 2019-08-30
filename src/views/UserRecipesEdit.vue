@@ -30,7 +30,7 @@
                     <input class="form-control" v-model="user_recipe.image_url" type="text" placeholder="Image" />
                   </div>
                   <div class="form-group">
-                    <button class="btn btn-block btn-round btn-brand" type="submit">Sign Up</button>
+                    <button class="btn btn-block btn-round btn-brand" type="submit">Edit</button>
                   </div>
                 </form>
               </div>
@@ -39,18 +39,6 @@
         </div>
       </div>
     </section>
-
-    <svg
-      class="footer-circle"
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-      width="100%"
-      height="100"
-      viewbox="0 0 100 100"
-      preserveaspectratio="none"
-    >
-      <path d="M0 100 C40 0 60 0 100 100 Z"></path>
-    </svg>
     <!-- Footer-->
     <footer class="footer">
       <div class="container">
@@ -83,8 +71,7 @@ export default {
   data: function() {
     return {
       recipe: {},
-      user_recipe: {},
-      inputUser_recipe: {}
+      user_recipe: {}
     };
   },
   created: function() {
@@ -94,13 +81,13 @@ export default {
     });
   },
   methods: {
-    updateUserRecipe: function(inputUser_recipe) {
+    updateUserRecipe: function(user_recipe) {
       var params = {
-        directions: inputUser_recipe.directions,
-        new_ingredients: inputUser_recipe.new_ingredients,
-        image_url: inputUser_recipe.image_url
+        directions: user_recipe.directions,
+        new_ingredients: user_recipe.new_ingredients,
+        image_url: user_recipe.image_url
       };
-      axios.patch("/api/user_recipes/" + inputUser_recipe.id, params).then(response => {
+      axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
         console.log("Successful update", response.data);
         this.name = response.data.name;
       });
