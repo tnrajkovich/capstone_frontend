@@ -1,6 +1,6 @@
 <template>
   <div class="container show">
-    <section class="module" id="popular" data-background="/../public/assets/images/Steak.jpg" data-overlay="0.7">
+    <section class="module" id="popular" data-background="assets/images/Steak.jpg" data-overlay="0.4">
       <div class="container">
         <div class="row">
           <div class="col-md-6 m-auto text-center">
