@@ -37,7 +37,7 @@
                 v-bind:key="user_recipe.vote"
               >
                 <div class="menu-simple-item-img">
-                  {{ user_recipe.user_id }}
+                  {{ username }}
                   <img :src="user_recipe.image_url" />
                 </div>
                 <div class="menu-simple-item-inner">
@@ -46,10 +46,10 @@
                     <span class="pull-right">
                       {{ user_recipe.vote }}
                       <div>
-                        <button class="up" v-on:click="upvote(vote)">△</button>
+                        <button class="up" v-on:click="upvote(user_recipe)">△</button>
                       </div>
                       <div>
-                        <button class="down" v-on:click="downvote(vote)">▽</button>
+                        <button class="down" v-on:click="downvote(user_recipe)">▽</button>
                       </div>
                     </span>
                   </h6>
@@ -142,21 +142,23 @@ export default {
   data: function() {
     return {
       recipe: {},
-      User: {},
       parent_recipe: {},
       user_recipe: {},
+      user: {},
       description: "",
       new_ingredients: "",
       parent_recipe_id: "",
       vote: "",
       image_url: "",
-      errors: []
+      errors: [],
+      username: null
     };
   },
   created: function() {
     axios.get("/api/parent_recipes/" + this.$route.params.id).then(response => {
       this.parent_recipe = response.data;
     });
+    this.username = localStorage.getItem("username");
   },
   methods: {
     setFile: function(event) {
@@ -164,13 +166,27 @@ export default {
         this.image_url = event.target.files[0];
       }
     },
-    upvote: function(vote) {
-      this.user_recipe.vote += 1;
-      this.user_recipe.save;
+    upvote: function(user_recipe) {
+      var params = {
+        vote: this.vote
+      };
+      axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
+        user_recipe.vote += 1;
+        user_recipe.save;
+        console.log("Successful update", response.data);
+        this.vote = response.data.vote;
+      });
     },
-    downvote: function(vote) {
-      this.user_recipe.vote -= 1;
-      this.user_recipe.save;
+    downvote: function(user_recipe) {
+      var params = {
+        vote: this.vote
+      };
+      axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
+        user_recipe.vote -= 1;
+        user_recipe.save;
+        console.log("Successful update", response.data);
+        this.vote = response.data.vote;
+      });
     },
     destroyUserRecipe: function(user_recipe) {
       axios.delete("/api/user_recipes/" + user_recipe.id).then(response => {
