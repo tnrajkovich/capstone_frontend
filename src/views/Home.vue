@@ -4,7 +4,7 @@
     <section
       class="module-cover parallax fullscreen"
       id="home"
-      data-jarallax-video="https://www.youtube.com/watch?v=qKqj85oo2wI"
+      data-jarallax-video="http://www.youtube.com/watch?v=qKqj85oo2wI"
       data-overlay="1"
       data-gradient="1"
     >

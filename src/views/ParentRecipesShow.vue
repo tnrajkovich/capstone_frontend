@@ -58,7 +58,7 @@
                   <router-link v-bind:to="`/user_recipes/${user_recipe.id}/edit`">
                     Edit
                   </router-link>
-                  <button class="delete" v-on:click="destroyUserRecipe(user_recipe)">
+                  <button class="delete" type="submit" v-on:click="destroyUserRecipe(user_recipe)">
                     Delete
                   </button>
                 </div>
@@ -73,7 +73,12 @@
           <div class="col-md-12">
             <div class="space" data-mY="60px"></div>
             <h3>New Recipe Mod</h3>
-            <form action="/api/user_recipes" enctype="multipart/form-data" v-on:submit.prevent="createUserRecipe()">
+            <form
+              method="POST"
+              action="/api/user_recipes"
+              enctype="multipart/form-data"
+              v-on:submit.prevent="createUserRecipe()"
+            >
               <ul>
                 <li v-for="error in errors">{{ error }}</li>
               </ul>
@@ -85,7 +90,9 @@
               <input type="text" v-model="parent_recipe_id" />
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
-              <input type="submit" value="Create" />
+              <button type="submit" value="Create">
+                Create
+              </button>
             </form>
           </div>
         </div>
@@ -160,21 +167,6 @@ export default {
       this.parent_recipe = response.data;
     });
     this.username = localStorage.getItem("username");
-    var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
-    cable.subscriptions.create("MessagesChannel", {
-      connected: () => {
-        // Called when the subscription is ready for use on the server
-        console.log("Connected to MessagesChannel");
-      },
-      disconnected: () => {
-        // Called when the subscription has been terminated by the server
-      },
-      received: data => {
-        // Called when there's incoming data on the websocket for this channel
-        console.log("Data from MessagesChannel:", data);
-        this.messages.unshift(data); // update the messages in real time
-      }
-    });
   },
   methods: {
     setFile: function(event) {
@@ -204,10 +196,11 @@ export default {
     },
     destroyUserRecipe: function(user_recipe) {
       axios.delete("/api/user_recipes/" + user_recipe.id).then(response => {
-        this.$router.do;
+        this.user_recipe = response.data;
+        this.$router.go(0);
       });
     },
-    createUserRecipe: function() {
+    createUserRecipe: function(user_recipe) {
       var formData = new FormData();
       formData.append("description", this.description);
       formData.append("new_ingredients", this.new_ingredients);
@@ -222,6 +215,7 @@ export default {
           this.parent_recipe_id = "";
           this.vote = "";
           this.$refs.fileInput.value = "";
+          this.$router.go(0);
         })
         .catch(error => {
           console.log(error.response);
