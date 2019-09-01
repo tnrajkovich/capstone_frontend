@@ -160,6 +160,21 @@ export default {
       this.parent_recipe = response.data;
     });
     this.username = localStorage.getItem("username");
+    var cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+    cable.subscriptions.create("MessagesChannel", {
+      connected: () => {
+        // Called when the subscription is ready for use on the server
+        console.log("Connected to MessagesChannel");
+      },
+      disconnected: () => {
+        // Called when the subscription has been terminated by the server
+      },
+      received: data => {
+        // Called when there's incoming data on the websocket for this channel
+        console.log("Data from MessagesChannel:", data);
+        this.messages.unshift(data); // update the messages in real time
+      }
+    });
   },
   methods: {
     setFile: function(event) {
@@ -168,21 +183,21 @@ export default {
       }
     },
     upvote: function(user_recipe) {
+      user_recipe.vote += 1;
       var params = {
         vote: user_recipe.vote
       };
       axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
-        user_recipe.vote += 1;
         console.log("Successful update", response.data);
         this.vote = response.data.vote;
       });
     },
     downvote: function(user_recipe) {
+      user_recipe.vote -= 1;
       var params = {
         vote: user_recipe.vote
       };
       axios.patch("/api/user_recipes/" + user_recipe.id, params).then(response => {
-        user_recipe.vote -= 1;
         console.log("Successful update", response.data);
         this.vote = response.data.vote;
       });

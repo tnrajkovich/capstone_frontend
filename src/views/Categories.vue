@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <div id="map"></div>
     <section
       class="module-cover parallax fullscreen"
       id="home"
@@ -62,15 +61,6 @@
 
 <script>
 import axios from "axios";
-
-mapboxgl.accessToken = "pk.eyJ1IjoidG5yYWprb3ZpY2giLCJhIjoiY2p6eGMxdmZxMWF5NDNqcW9pc2QwbHdpOCJ9.CqVN6JmE6DOL3ojj6Edl_g"; // replace this with your access token
-var map = new mapboxgl.Map({
-  container: "map",
-  style: "", // replace this with your style URL
-  center: [-87.661557, 41.893748],
-  zoom: 10.7
-});
-// code from the next step will go here
 
 export default {
   data: function() {
