@@ -13,9 +13,12 @@
                   <a href="/"><span class="menu-item-span">Home</span></a>
                 </li>
                 <li>
+                  <a href="/Categories"><span class="menu-item-span">Take a trip around the world!</span></a>
+                </li>
+                <li v-if="!jwt">
                   <a href="/Signup"><span class="menu-item-span" v-if="!jwt">Signup</span></a>
                 </li>
-                <li>
+                <li v-if="!jwt">
                   <a href="/Login"><span class="menu-item-span" v-if="!jwt">Login</span></a>
                 </li>
                 <!--                 <li>

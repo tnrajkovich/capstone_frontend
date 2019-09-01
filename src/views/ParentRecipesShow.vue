@@ -144,7 +144,6 @@ img {
 
 <script>
 import axios from "axios";
-import ActionCable from "actioncable";
 
 export default {
   data: function() {

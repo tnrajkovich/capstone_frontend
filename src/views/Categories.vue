@@ -1,162 +1,97 @@
 <template>
-  <div class="container">
+  <div class="wrapper">
     <div id="map"></div>
-    <section
-      class="module-cover parallax fullscreen"
-      id="home"
-      data-jarallax-video="https://www.youtube.com/watch?v=qKqj85oo2wI"
-      data-overlay="1"
-      data-gradient="1"
-    >
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 m-auto">
-            <div class="text-center">
-              <h6 class="text-uppercase"></h6>
-              <h1 class="display-1">Social Recipes</h1>
-              <p>
-                Categories
-              </p>
-              <div class="space" data-mY="40px"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="module no-gutter p-0" id="gallery">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-4 col-lg-12 bg-gray">
-            <div class="gallery-shorcode-desc">
-              <div class="vertical-body">
-                <div class="vertical">
-                  <div class="text-center"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-8 col-lg-12">
-            <div class="gallery gallery-shorcode">
-              <div class="gallery-item" v-for="category in categories">
-                <div class="gallery-image"></div>
-                <a :href="`/categories/${category.id}`" :title="category.name"></a>
-                <router-link v-bind:to="`/categories/${category.id}`"></router-link>
-                <h2>{{ category.name }}</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
 <style type="text/css">
 #map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+  height: 1000px;
 }
 </style>
 
 <script>
+/* global mapboxgl, mapboxSdk */
 import axios from "axios";
-
-mapboxgl.accessToken = "pk.eyJ1IjoidG5yYWprb3ZpY2giLCJhIjoiY2p6eGMxdmZxMWF5NDNqcW9pc2QwbHdpOCJ9.CqVN6JmE6DOL3ojj6Edl_g";
-
-var map = new mapboxgl.Map({
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v9"
-});
-
-var size = 200;
-
-var pulsingDot = {
-  width: size,
-  height: size,
-  data: new Uint8Array(size * size * 4),
-
-  onAdd: function() {
-    var canvas = document.createElement("canvas");
-    canvas.width = this.width;
-    canvas.height = this.height;
-    this.context = canvas.getContext("2d");
-  },
-
-  render: function() {
-    var duration = 1000;
-    var t = (performance.now() % duration) / duration;
-
-    var radius = (size / 2) * 0.3;
-    var outerRadius = (size / 2) * 0.7 * t + radius;
-    var context = this.context;
-
-    // draw outer circle
-    context.clearRect(0, 0, this.width, this.height);
-    context.beginPath();
-    context.arc(this.width / 2, this.height / 2, outerRadius, 0, Math.PI * 2);
-    context.fillStyle = "rgba(255, 200, 200," + (1 - t) + ")";
-    context.fill();
-
-    // draw inner circle
-    context.beginPath();
-    context.arc(this.width / 2, this.height / 2, radius, 0, Math.PI * 2);
-    context.fillStyle = "rgba(255, 100, 100, 1)";
-    context.strokeStyle = "white";
-    context.lineWidth = 2 + 4 * (1 - t);
-    context.fill();
-    context.stroke();
-
-    // update this image's data with data from the canvas
-    this.data = context.getImageData(0, 0, this.width, this.height).data;
-
-    // keep the map repainting
-    map.triggerRepaint();
-
-    // return `true` to let the map know that the image was updated
-    return true;
-  }
-};
-
-map.on("load", function() {
-  map.addImage("pulsing-dot", pulsingDot, { pixelRatio: 2 });
-
-  map.addLayer({
-    id: "points",
-    type: "symbol",
-    source: {
-      type: "geojson",
-      data: {
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            geometry: {
-              type: "Point",
-              coordinates: [0, 0]
-            }
-          }
-        ]
-      }
-    },
-    layout: {
-      "icon-image": "pulsing-dot"
-    }
-  });
-});
 
 export default {
   data: function() {
     return {
+      message: "Welcome to Vue.js!",
+      places: [
+        {
+          lat: 18.7953,
+          long: 98.962,
+          description: "The original Pad Thai"
+        },
+        {
+          lat: 41.9028,
+          long: 12.4964,
+          description: "Carbonara to die for"
+        },
+        {
+          lat: 10.8231,
+          long: 106.6297,
+          description: "The home of Pho"
+        }
+      ],
       categories: []
     };
   },
-  created: function() {
-    axios.get("/api/categories").then(response => {
-      this.categories = response.data;
+  mounted: function() {
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoidG5yYWprb3ZpY2giLCJhIjoiY2swMWR1OTRrMW1kbDNsa2lraDRzMnluZSJ9.KuawrUb6lA4iw248Ph4jgQ";
+    var map = new mapboxgl.Map({
+      container: "map", // container id
+      style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+      center: [34.2993, 43.413], // starting position [lng, lat]
+      zoom: 3 // starting zoom
     });
+    // var popup = new mapboxgl.Popup({ offset: 25 }).setText("Construction on the Washington Monument began in 1848.");
+    // var marker = new mapboxgl.Marker()
+    //   .setLngLat([30.5, 50.5])
+    //   .setPopup(popup)
+    //   .addTo(map);
+    this.places.forEach(function(place) {
+      var popup = new mapboxgl.Popup({ offset: 25 }).setText(place.description);
+      var marker = new mapboxgl.Marker()
+        .setLngLat([place.long, place.lat])
+        .setPopup(popup)
+        .addTo(map)
+        .addHTML(<a href="/categories/">);
+
+      marker.on("click", function() {
+        window.location = this.url;
+      });
+    });
+    // for (var i = 0; i < this.places.length; i++) {
+    //   var place = this.places[i];
+    //   var popup = new mapboxgl.Popup({ offset: 25 }).setText(place.description);
+    //   var marker = new mapboxgl.Marker()
+    //     .setLngLat([place.long, place.lat])
+    //     .setPopup(popup)
+    //     .addTo(map);
+    // }
+    var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    mapboxClient.geocoding
+      .forwardGeocode({
+        query: "Merchandise Mart, Chicago",
+        autocomplete: false,
+        limit: 1
+      })
+      .send()
+      .then(function(response) {
+        if (response && response.body && response.body.features && response.body.features.length) {
+          var feature = response.body.features[0];
+          new mapboxgl.Marker().setLngLat(feature.center).addTo(map);
+        }
+      });
   },
+  // created: function() {
+  //   axios.get("/api/categories").then(response => {
+  //     this.categories = response.data;
+  //   });
+  // },
   methods: {}
 };
 </script>
