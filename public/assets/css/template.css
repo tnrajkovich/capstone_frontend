@@ -2970,7 +2970,6 @@ button {
 }
 
 .gallery-item .gallery-image:before {
-    background-image: url(../images/zoom-white.png);
     background-size: 20px 20px;
     display: inline-block;
     width: 20px;

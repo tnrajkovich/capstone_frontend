@@ -50,8 +50,8 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/parent_recipes").then(response => {
-      this.parent_recipe = response.data;
+    axios.get("/api/categories" + this.$route.params.id).then(response => {
+      this.category = response.data;
     });
     this.username = localStorage.getItem("username");
   },

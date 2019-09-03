@@ -18,6 +18,7 @@ export default {
   data: function() {
     return {
       message: "Welcome to Vue.js!",
+      category: {},
       places: [
         {
           lat: 18.7953,
@@ -44,7 +45,7 @@ export default {
     var map = new mapboxgl.Map({
       container: "map", // container id
       style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
-      center: [34.2993, 43.413], // starting position [lng, lat]
+      center: [67.0011, 24.8607], // starting position [lng, lat]
       zoom: 3 // starting zoom
     });
     // var popup = new mapboxgl.Popup({ offset: 25 }).setText("Construction on the Washington Monument began in 1848.");
@@ -58,11 +59,11 @@ export default {
         .setLngLat([place.long, place.lat])
         .setPopup(popup)
         .addTo(map)
-        .addHTML(<a href="/categories/">);
+        .setHTML("<h3><a href=" + "/categories/" + currentFeature.category.id + ">" + "</a></h3>");
 
-      marker.on("click", function() {
-        window.location = this.url;
-      });
+      // marker.on("click", function() {
+      //   window.location = this.url;
+      // });
     });
     // for (var i = 0; i < this.places.length; i++) {
     //   var place = this.places[i];

@@ -4,8 +4,7 @@
     <section
       class="module-cover parallax fullscreen"
       id="home"
-      data-background="/assets/images/Dessert.png"
-      data-jarallax-video="https://youtu.be/RXCS1t72M7g"
+      data-background="/assets/images/Dessert.jpg"
       data-overlay="1"
       data-gradient="1"
     >
@@ -31,9 +30,9 @@
           <div class="col-xl-8 col-lg-12">
             <div class="gallery gallery-shorcode">
               <div class="gallery-item" v-for="parent_recipe in parent_recipes">
-                <div class="gallery-image" :data-background="parent_recipe.image_url"></div>
-                <a :href="`/parent_recipes/${parent_recipe.id}`" :title="parent_recipe.title"></a>
-                <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`"></router-link>
+                <div class="gallery-image" :data-background="parent_recipe.image_url">
+                  <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`"></router-link>
+                </div>
                 <h2>{{ parent_recipe.title }}</h2>
                 <h4>{{ parent_recipe.ingredients }}</h4>
                 <p>{{ parent_recipe.directions }}</p>
@@ -59,8 +58,7 @@ import axios from "axios";
 export default {
   data: function() {
     return {
-      parent_recipes: [],
-      parent_recipe: {}
+      parent_recipes: []
     };
   },
   created: function() {
