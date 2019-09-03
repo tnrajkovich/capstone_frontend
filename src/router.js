@@ -8,7 +8,7 @@ import ParentRecipesShow from "./views/ParentRecipesShow.vue";
 import ParentRecipesEdit from "./views/ParentRecipesEdit.vue";
 import UserRecipesEdit from "./views/UserRecipesEdit.vue";
 import Categories from "./views/Categories.vue";
-import CategoriesList from "./views/CategoriesList.vue";
+import CategoriesShow from "./views/CategoriesShow.vue";
 import Signup from "./views/Signup.vue";
 import Login from "./views/Login.vue";
 import Logout from "./views/Logout.vue";
@@ -83,9 +83,9 @@ export default new Router({
       component: Categories
     },
     {
-      path: "/categories_list",
-      name: "categories_list",
-      component: CategoriesList
+      path: "/categories/:id",
+      name: "categories_show",
+      component: CategoriesShow
     }
   ]
 });

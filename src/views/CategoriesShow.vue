@@ -46,7 +46,7 @@ export default {
     };
   },
   created: function() {
-    axios.get("/api/categories" + this.$route.params.id).then(response => {
+    axios.get("/api/categories/" + this.$route.params.id).then(response => {
       this.category = response.data;
     });
     this.username = localStorage.getItem("username");

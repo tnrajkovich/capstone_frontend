@@ -20,21 +20,25 @@ export default {
       message: "Welcome to Vue.js!",
       category: {},
       categories: [],
+      currentFeature: {},
       places: [
         {
           lat: 18.7953,
           long: 98.962,
-          description: "The original Pad Thai"
+          name: "Thai",
+          id: 2
         },
         {
           lat: 41.9028,
           long: 12.4964,
-          description: "Carbonara to die for"
+          name: "Italian",
+          id: 1
         },
         {
           lat: 10.8231,
           long: 106.6297,
-          description: "The home of Pho"
+          name: "Vietnamese",
+          id: 3
         }
       ]
     };
@@ -54,25 +58,19 @@ export default {
     //   .setPopup(popup)
     //   .addTo(map);
     this.places.forEach(function(place) {
-      var popup = new mapboxgl.Popup({ offset: 25 }).setText(place.description);
+      var popup = new mapboxgl.Popup({ offset: 25 })
+        .setText(place.name)
+        .setHTML("<a href=/categories/" + place.id + "><h3>" + place.name + "</h3></a>");
       var marker = new mapboxgl.Marker()
         .setLngLat([place.long, place.lat])
         .setPopup(popup)
         .addTo(map);
-      // .setHTML("<h3><a href=" + "/categories/2" + ">" + "</a></h3>");
 
       // marker.on("click", function() {
       //   window.location = this.url;
       // });
     });
-    // for (var i = 0; i < this.places.length; i++) {
-    //   var place = this.places[i];
-    //   var popup = new mapboxgl.Popup({ offset: 25 }).setText(place.description);
-    //   var marker = new mapboxgl.Marker()
-    //     .setLngLat([place.long, place.lat])
-    //     .setPopup(popup)
-    //     .addTo(map);
-    // }
+
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     mapboxClient.geocoding
       .forwardGeocode({
