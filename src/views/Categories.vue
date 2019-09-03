@@ -19,6 +19,7 @@ export default {
     return {
       message: "Welcome to Vue.js!",
       category: {},
+      categories: [],
       places: [
         {
           lat: 18.7953,
@@ -35,8 +36,7 @@ export default {
           long: 106.6297,
           description: "The home of Pho"
         }
-      ],
-      categories: []
+      ]
     };
   },
   mounted: function() {
@@ -58,8 +58,8 @@ export default {
       var marker = new mapboxgl.Marker()
         .setLngLat([place.long, place.lat])
         .setPopup(popup)
-        .addTo(map)
-        .setHTML("<h3><a href=" + "/categories/" + currentFeature.category.id + ">" + "</a></h3>");
+        .addTo(map);
+      // .setHTML("<h3><a href=" + "/categories/2" + ">" + "</a></h3>");
 
       // marker.on("click", function() {
       //   window.location = this.url;

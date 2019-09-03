@@ -5,6 +5,7 @@
       class="module-cover parallax fullscreen"
       id="home"
       data-background="/assets/images/Dessert.jpg"
+      data-jarallax-video="https://www.youtube.com/watch?v=qKqj85oo2wI"
       data-overlay="1"
       data-gradient="1"
     >
@@ -53,6 +54,8 @@
 </style>
 
 <script>
+/* global $ */
+import Vue from "vue";
 import axios from "axios";
 
 export default {
@@ -61,9 +64,47 @@ export default {
       parent_recipes: []
     };
   },
-  created: function() {
+  created: function() {},
+  mounted: function() {
+    // $('.gallery').magnificPopup({
+    //   delegate:        'a',
+    //   type:            'image',
+    //   fixedContentPos: false,
+    //   gallery: {
+    //     enabled: true,
+    //     navigateByImgClick: true,
+    //     preload: [0,1]
+    //   },
+    //   image: {
+    //     titleSrc: 'title',
+    //     tError: 'The image could not be loaded.',
+    //   },
+    //   callbacks: {
+
+    //     open: function() {
+    //       $('body').addClass('noscroll');
+    //       $('html').css('margin-right', '17px');
+    //     },
+
+    //     close: function() {
+    //       $('body').removeClass('noscroll');
+    //       $('html').css('margin-right', 0);
+    //     }
+    //   }
+    // });
+
     axios.get("/api/parent_recipes").then(response => {
       this.parent_recipes = response.data;
+      Vue.nextTick().then(function() {
+        $("[data-background]").each(function() {
+          $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
+        });
+        $(".gallery").magnificPopup({
+          disableOn: function() {
+            return true;
+          }
+        });
+      });
     });
   },
   methods: {}
