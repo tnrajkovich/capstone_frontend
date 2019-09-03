@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-md-6 m-auto text-center" v-for="parent_recipe in category.parent_recipes">
         <img :src="parent_recipe.image_url" />
-        <h1 class="display-1">{{ parent_recipe.title }}</h1>
+        <h1 class="display-1">
+          <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
+        </h1>
         <p class="lead">{{ parent_recipe.ingredients }}</p>
         <p class="lead">{{ parent_recipe.directions }}</p>
         <div class="divider-border"></div>
