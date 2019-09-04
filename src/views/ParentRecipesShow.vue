@@ -88,7 +88,10 @@
               New Ingredients:
               <input type="text" v-model="new_ingredients" />
               Parent Recipe:
-              <input type="text" v-model="parent_recipe_id" />
+              <input type="text" v-model="parent_recipe_id" list="parent-recipe-names" />
+              <datalist id="parent-recipe-names" v-for="parent_recipe in parent_recipes">
+                <option>{{ parent_recipe.title }}</option>
+              </datalist>
               Image:
               <input type="file" v-on:change="setFile($event)" ref="fileInput" />
               <button type="submit" value="Create">
@@ -207,7 +210,7 @@ export default {
         this.$router.go(0);
       });
     },
-    createUserRecipe: function(user_recipe) {
+    createUserRecipe: function() {
       var formData = new FormData();
       formData.append("description", this.description);
       formData.append("new_ingredients", this.new_ingredients);
