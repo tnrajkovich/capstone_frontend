@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <section class="module-cover fullscreen parallax" data-background="assets/images/Bolognese.jpg" data-overlay="0.7">
+    <section class="module-cover fullscreen parallax" data-background="assets/images/Bolognese.jpg" data-overlay="0.8">
       <div class="container">
         <div class="row">
           <div class="col-md-4 m-auto">
@@ -33,14 +33,7 @@
                   </div>
                 </form>
               </div>
-              <div class="up-help">
-                <p>
-                  By clicking "Sign Up", you agree to our
-                  <br />
-                  <a href="#">software services agreement</a>
-                  .
-                </p>
-              </div>
+              <div class="up-help"></div>
             </div>
           </div>
         </div>
@@ -48,7 +41,7 @@
     </section>
     <!-- Hero end-->
 
-    <svg
+    <!--     <svg
       class="footer-circle"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
@@ -58,15 +51,15 @@
       preserveaspectratio="none"
     >
       <path d="M0 100 C40 0 60 0 100 100 Z"></path>
-    </svg>
+    </svg> -->
     <!-- Footer-->
     <footer class="footer">
       <div class="container">
         <div class="row">
+          <!--           <div class="col-md-3"></div>
           <div class="col-md-3"></div>
           <div class="col-md-3"></div>
-          <div class="col-md-3"></div>
-          <div class="col-md-3"></div>
+          <div class="col-md-3"></div> -->
         </div>
       </div>
       <div class="small-footer">
@@ -82,7 +75,11 @@
   </div>
 </template>
 
-<style type="text/css"></style>
+<style type="text/css">
+.up-form {
+  padding-bottom: 100px;
+}
+</style>
 
 <script>
 import axios from "axios";

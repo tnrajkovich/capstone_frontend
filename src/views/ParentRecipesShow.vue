@@ -1,6 +1,6 @@
 <template>
-  <div class="container show">
-    <section class="module" id="popular" data-background="assets/images/Steak.jpg" data-overlay="0.4">
+  <div class="wrapper">
+    <section class="module" id="popular">
       <div class="container">
         <div class="row">
           <div class="col-md-6 m-auto text-center">
@@ -21,12 +21,13 @@
                 <div class="menu-simple-item-img"><img src="assets/images/widgets/1.jpg" alt="" /></div>
                 <div class="menu-simple-item-inner">
                   <img :src="parent_recipe.image_url" />
-                  <iframe width="420" height="315" :src="parent_recipe.video"></iframe>
+                  <iframe width="700" height="500" :src="parent_recipe.video"></iframe>
                   <h4>
+                    Ingredients:
                     <span>{{ parent_recipe.ingredients }}</span>
                     <span class="pull-right"></span>
                   </h4>
-                  <p>{{ parent_recipe.directions }}</p>
+                  <p>Directions: {{ parent_recipe.directions }}</p>
                 </div>
               </div>
               <div>
@@ -104,6 +105,13 @@
 <style type="text/css">
 img {
   width: 300px;
+  padding-bottom: 40px;
+  align-content: center;
+}
+
+.menu-simple-item-img {
+  width: 100px;
+  height: 100px;
 }
 
 .vote {

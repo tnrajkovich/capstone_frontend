@@ -27,11 +27,6 @@
                 <li>
                   <a href="/Logout"><span class="menu-item-span" v-if="jwt">Logout</span></a>
                 </li>
-                <li>
-                  Search:
-                  <input v-model="searchFilter" type="text" list="titles" />
-                  <datalist id="titles"></datalist>
-                </li>
               </ul>
             </div>
           </div>

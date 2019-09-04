@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <section class="module-cover fullscreen parallax" data-background="assets/images/Lasagna.jpg" data-overlay="0.8">
+    <section class="module-cover fullscreen parallax" data-background="/assets/images/Lasagna.jpg" data-overlay="0.8">
       <div class="container">
         <div class="row">
           <div class="col-md-4 m-auto">

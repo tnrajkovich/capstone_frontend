@@ -50,6 +50,17 @@
 .gallery-image {
   height: 300px;
   align-content: center;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.gallery {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.gallery-item {
+  padding-left: 40px;
+  padding-right: 40px;
 }
 </style>
 
@@ -57,11 +68,16 @@
 /* global $ */
 import Vue from "vue";
 import axios from "axios";
+import Vue2Filters from "vue2-filters";
 
 export default {
+  mixins: [Vue2Filters.mixin],
   data: function() {
     return {
-      parent_recipes: []
+      parent_recipes: [],
+      searchFilter: "",
+      sortAttribute: "title",
+      currentRecipe: {}
     };
   },
   created: function() {},

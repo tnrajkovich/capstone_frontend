@@ -1,29 +1,32 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 m-auto text-center" v-for="parent_recipe in category.parent_recipes">
-        <img :src="parent_recipe.image_url" />
-        <h1 class="display-1">
-          <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
-        </h1>
-        <p class="lead">{{ parent_recipe.ingredients }}</p>
-        <p class="lead">{{ parent_recipe.directions }}</p>
-        <div class="divider-border"></div>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row-50">
+        <div class="col-md-6 m-auto text-center" v-for="parent_recipe in category.parent_recipes">
+          <img :src="parent_recipe.image_url" />
+          <h1 class="display-1">
+            <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
+          </h1>
+          <p class="lead">{{ parent_recipe.ingredients }}</p>
+          <p class="lead">{{ parent_recipe.directions }}</p>
+          <div class="divider-border"></div>
+        </div>
+      </div>
+      <div class="row">
+        <router-link v-bind:to="`/`">Back to all recipes</router-link>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="space" data-mY="60px"></div>
-      </div>
-    </div>
-
-    <router-link v-bind:to="`/`">Back to all recipes</router-link>
   </div>
 </template>
 
 <style type="text/css">
 img {
   width: 300px;
+}
+
+.row-50 {
+  padding-top: 100px;
+  padding-bottom: 10px;
 }
 </style>
 
