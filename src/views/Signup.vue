@@ -8,8 +8,8 @@
               <div class="up-as">
                 <h5>Create a new account</h5>
               </div>
-              <div class="up-form" v-on:submit.prevent="submit()">
-                <form method="post">
+              <div class="up-form">
+                <form method="post" v-on:submit.prevent="submit()">
                   <div class="form-group">
                     <input class="form-control" type="text" placeholder="First Name" />
                   </div>

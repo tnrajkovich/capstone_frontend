@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="container">
+  <div class="wrapper" data-background="/assets/images/floor-tile.png">
+    <div class="container" data-background="/assets/images/floor-tile.png">
       <div class="row-50">
         <div class="col-md-6 m-auto text-center" v-for="parent_recipe in category.parent_recipes">
           <img :src="parent_recipe.image_url" />

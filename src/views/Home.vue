@@ -1,12 +1,11 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" data-background="/assets/images/floor-tile.png">
     <!-- Hero-->
     <section
       class="module-cover parallax fullscreen"
       id="home"
       data-background="/assets/images/Dessert.jpg"
-      data-jarallax-video="https://www.youtube.com/watch?v=qKqj85oo2wI"
-      data-overlay="1"
+      data-overlay=".9"
       data-gradient="1"
     >
       <div class="container">
@@ -25,7 +24,7 @@
       </div>
     </section>
 
-    <section class="module no-gutter p-0" id="gallery">
+    <section class="module no-gutter p-0" id="gallery" data-background="/assets/images/floor-tile.png">
       <div class="container-fluid">
         <div class="row">
           <div class="col-xl-8 col-lg-12">
@@ -48,7 +47,7 @@
 
 <style>
 .gallery-image {
-  height: 300px;
+  height: 200px;
   align-content: center;
   padding-left: 40px;
   padding-right: 40px;
@@ -61,6 +60,10 @@
 .gallery-item {
   padding-left: 40px;
   padding-right: 40px;
+}
+
+.gallery-item h4 {
+  min-height: 3em;
 }
 </style>
 

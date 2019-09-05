@@ -23,12 +23,12 @@
                       class="form-control"
                       v-model="user_recipe.new_ingredients"
                       type="text"
-                      placeholder="New Ingredients"
+                      placeholder="Ingredient Variations"
                     />
                   </div>
-                  <div class="form-group">
+                  <!--                   <div class="form-group">
                     <input class="form-control" v-model="user_recipe.image_url" type="text" placeholder="Image" />
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <button class="btn btn-block btn-round btn-brand" type="submit">Edit</button>
                   </div>

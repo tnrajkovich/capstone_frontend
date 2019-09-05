@@ -39,6 +39,43 @@ export default {
           long: 106.6297,
           name: "Vietnamese",
           id: 3
+        },
+        {
+          lat: 48.8566,
+          long: 2.3522,
+          name: "French",
+          id: 4
+        },
+
+        {
+          lat: 34.6937,
+          long: 135.5023,
+          name: "Japanese",
+          id: 5
+        },
+        {
+          lat: 19.076,
+          long: 72.8777,
+          name: "Indian",
+          id: 6
+        },
+        {
+          lat: 37.9838,
+          long: 23.7275,
+          name: "Greek",
+          id: 7
+        },
+        {
+          lat: -12.0464,
+          long: -77.0428,
+          name: "Peruvian",
+          id: 8
+        },
+        {
+          lat: -25.6748,
+          long: -100.2155,
+          name: "Mexican",
+          id: 9
         }
       ]
     };

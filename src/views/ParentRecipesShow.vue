@@ -30,6 +30,7 @@
                   <p>Directions: {{ parent_recipe.directions }}</p>
                 </div>
               </div>
+
               <div>
                 <h1>Recipe mods</h1>
               </div>
@@ -48,17 +49,26 @@
                     <span class="pull-right">
                       {{ user_recipe.vote }}
                       <div>
-                        <button class="up" v-on:click="upvote(user_recipe)">△</button>
+                        <button class="up" v-on:click="upvote(user_recipe)">
+                          △
+                        </button>
                       </div>
                       <div>
-                        <button class="down" v-on:click="downvote(user_recipe)">▽</button>
+                        <button class="down" v-on:click="downvote(user_recipe)">
+                          ▽
+                        </button>
                       </div>
                     </span>
                   </h6>
                   <p>Ingredient variation: {{ user_recipe.new_ingredients }}</p>
-                  <router-link v-bind:to="`/user_recipes/${user_recipe.id}/edit`">
+                  <button class="edit" type="submit">
+                    <router-link v-bind:to="`/user_recipes/${user_recipe.id}/edit`">
+                      Edit
+                    </router-link>
+                  </button>
+                  <!--                   <router-link v-bind:to="`/user_recipes/${user_recipe.id}/edit`">
                     Edit
-                  </router-link>
+                  </router-link> -->
                   <button class="delete" type="submit" v-on:click="destroyUserRecipe(user_recipe)">
                     Delete
                   </button>
@@ -70,33 +80,56 @@
 
         <router-link v-bind:to="`/`">Back to all recipes</router-link>
 
-        <div class="row">
+        <div class="text-center">
+          <div class="up-as">
+            <h5>New Recipe Mod</h5>
+          </div>
+          <div class="up-form">
+            <!--         <div class="row">
           <div class="col-md-12">
             <div class="space" data-mY="60px"></div>
-            <h3>New Recipe Mod</h3>
+            <h3>New Recipe Mod</h3> -->
             <form
               method="POST"
               action="/api/user_recipes"
               enctype="multipart/form-data"
               v-on:submit.prevent="createUserRecipe()"
             >
-              <ul>
-                <li v-for="error in errors">{{ error }}</li>
-              </ul>
-              Description:
-              <input type="text" v-model="description" />
-              New Ingredients:
-              <input type="text" v-model="new_ingredients" />
-              Parent Recipe:
-              <input type="text" v-model="parent_recipe_id" list="parent-recipe-names" />
-              <datalist id="parent-recipe-names" v-for="parent_recipe in parent_recipes">
-                <option>{{ parent_recipe.title }}</option>
-              </datalist>
-              Image:
-              <input type="file" v-on:change="setFile($event)" ref="fileInput" />
-              <button type="submit" value="Create">
-                Create
-              </button>
+              <div class="form-group">
+                <ul>
+                  <li v-for="error in errors">{{ error }}</li>
+                </ul>
+
+                What did you do differently?
+                <input class="form-control" type="text" v-model="description" placeholder="Description" />
+              </div>
+              <div class="form-group">
+                Ingredient variations:
+                <input class="form-control" type="text" v-model="new_ingredients" placeholder="Ingredient variations" />
+              </div>
+              <div class="form-group">
+                Recipe name:
+                <input
+                  class="form-control"
+                  type="text"
+                  v-model="parent_recipe_id"
+                  list="parent-recipe-names"
+                  placeholder="Recipe name"
+                />
+
+                <datalist id="parent-recipe-names" v-for="parent_recipe in parent_recipes">
+                  <option>{{ parent_recipe.title }}</option>
+                </datalist>
+              </div>
+              <div class="form-group">
+                Image:
+                <input class="form-control" type="file" v-on:change="setFile($event)" ref="fileInput" />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-block btn-round btn-brand" type="submit" value="Create">
+                  Create New Recipe
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -146,10 +179,13 @@ img {
 }
 
 .delete {
-  border-left: 15px transparent;
-  border-right: 15px transparent;
-  border-top: 30px transparent;
-  border-bottom: 30px transparent;
+  padding: 7px;
+  border: 10px;
+}
+
+.edit {
+  padding: 7px;
+  border: 10px;
 }
 </style>
 
