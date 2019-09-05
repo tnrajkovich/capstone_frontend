@@ -25,7 +25,7 @@
     </section>
 
     <section class="module no-gutter p-0" id="gallery" data-background="/assets/images/floor-tile.png">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row">
           <div class="col-xl-8 col-lg-12">
             <div class="gallery gallery-shorcode">
@@ -34,8 +34,6 @@
                   <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`"></router-link>
                 </div>
                 <h2>{{ parent_recipe.title }}</h2>
-                <h4>{{ parent_recipe.ingredients }}</h4>
-                <p>{{ parent_recipe.directions }}</p>
               </div>
             </div>
           </div>
@@ -55,6 +53,7 @@
 .gallery {
   padding-top: 50px;
   padding-bottom: 50px;
+  align-content: center;
 }
 
 .gallery-item {
