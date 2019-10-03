@@ -7,8 +7,6 @@
           <h1 class="display-1">
             <router-link v-bind:to="`/parent_recipes/${parent_recipe.id}`">{{ parent_recipe.title }}</router-link>
           </h1>
-          <p class="lead">{{ parent_recipe.ingredients }}</p>
-          <p class="lead">{{ parent_recipe.directions }}</p>
           <div class="divider-border"></div>
         </div>
       </div>

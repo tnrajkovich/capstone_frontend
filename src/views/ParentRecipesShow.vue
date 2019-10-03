@@ -21,7 +21,7 @@
                 <div class="menu-simple-item-img"><img src="assets/images/widgets/1.jpg" alt="" /></div>
                 <div class="menu-simple-item-inner">
                   <img :src="parent_recipe.image_url" />
-                  <iframe width="700" height="500" :src="parent_recipe.video"></iframe>
+                  <iframe width="500" height="300" :src="parent_recipe.video"></iframe>
                   <h4>
                     Ingredients:
                     <span>{{ parent_recipe.ingredients }}</span>

@@ -70,12 +70,6 @@ export default {
           long: -77.0428,
           name: "Peruvian",
           id: 8
-        },
-        {
-          lat: -25.6748,
-          long: -100.2155,
-          name: "Mexican",
-          id: 9
         }
       ]
     };
